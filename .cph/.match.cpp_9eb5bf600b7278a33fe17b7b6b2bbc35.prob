@@ -1,0 +1,1 @@
+{"name":"Local: match","url":"d:\\code\\match.cpp","tests":[{"id":1730898111139,"input":"1 1 1\n1 1\n","output":""},{"id":1730898121830,"input":"4 2 7\n3 1\n1 2\n3 2\n1 1\n4 2\n4 1\n1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\match.cpp","group":"local","local":true}

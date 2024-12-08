@@ -1,0 +1,1 @@
+{"name":"Local: c","url":"d:\\code\\regionals\\2023Gulin\\c.cpp","tests":[{"id":1728915482648,"input":"2\n3\n1 2 3\n3\n1 2 3","output":""},{"id":1728915706052,"input":"1\n5\n3 3 5 1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\regionals\\2023Gulin\\c.cpp","group":"local","local":true}

@@ -1,0 +1,27 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "iosfwd": "cpp",
+        "string": "cpp",
+        "bitset": "cpp",
+        "cmath": "cpp",
+        "random": "cpp",
+        "functional": "cpp",
+        "deque": "cpp",
+        "vector": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp",
+        "valarray": "cpp",
+        "sstream": "cpp",
+        "regex": "cpp",
+        "string_view": "cpp",
+        "线性基第k大": "c",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "tuple": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled",
+    "cph.language.cpp.SubmissionCompiler": "GNU G++20 13.2 (64 bit, winlibs)"
+}

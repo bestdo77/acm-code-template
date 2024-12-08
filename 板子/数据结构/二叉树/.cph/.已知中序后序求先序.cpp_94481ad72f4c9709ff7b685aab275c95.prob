@@ -1,0 +1,1 @@
+{"name":"Local: 已知中序后序求先序","url":"d:\\code\\板子\\数据结构\\二叉树\\已知中序后序求先序.cpp","tests":[{"id":1730170723520,"input":"debac dabec ","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\板子\\数据结构\\二叉树\\已知中序后序求先序.cpp","group":"local","local":true}

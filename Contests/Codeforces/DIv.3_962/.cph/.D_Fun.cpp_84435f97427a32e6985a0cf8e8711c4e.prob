@@ -1,0 +1,1 @@
+{"name":"Local: D_Fun","url":"d:\\code\\Contests\\Codeforces\\DIv.3_962\\D_Fun.cpp","tests":[{"id":1722044925234,"input":"4\n7 4\n10 5\n7 1000\n900000 400000\n","output":"4\n10\n7\n1768016938"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\Contests\\Codeforces\\DIv.3_962\\D_Fun.cpp","group":"local","local":true}

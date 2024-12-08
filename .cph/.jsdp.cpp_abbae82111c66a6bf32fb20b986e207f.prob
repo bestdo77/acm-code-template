@@ -1,0 +1,1 @@
+{"name":"Local: jsdp","url":"d:\\code\\jsdp.cpp","tests":[{"id":1728446572814,"input":"1 99\n","output":"1 9999999\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\jsdp.cpp","group":"local","local":true}

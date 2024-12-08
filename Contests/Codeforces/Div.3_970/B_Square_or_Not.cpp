@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define inf 0x3f3f3f3f3f3f3f3f
+#define pii pair<int, int>
+#define endl '\n'
+const int N=1e6+10;
+const int N1=1e3+10;
+const int mod=1e9+7;
+const int element=3;
+int a[N];
+vector<int> G[N];
+void solve(){
+    int len;cin>>len;
+    string s;cin>>s;
+    // cout<<sqrt(18)<<endl;
+    if(s.size()==(int)sqrt(s.size())*(int)(sqrt(s.size()))){
+        int t=sqrt(s.size());
+        for(int i=0;i<t;i++){
+            for(int j=0;j<t;j++){
+                // s[i*t+j]
+                // cout<<i*t+j<<" "<<i<<" "<<j<<endl;
+                if(i==0||i==t-1||j==0||j==t-1){
+                    // cout<<i*t+j<<" "<<i<<" "<<j<<endl;
+                    if(s[i*t+j]=='0'){
+                        cout<<"No"<<endl;
+                        return;
+                    }
+                }else{
+                    if(s[i*t+j]=='1'){
+                        cout<<"No"<<endl;
+                        return;
+                    }
+                }
+            }
+        }
+    }else{
+        cout<<"No"<<endl;
+        return;
+    }
+    cout<<"Yes"<<endl;
+}   
+signed main(){
+    ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+    int t=1;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+    return 0;
+}
