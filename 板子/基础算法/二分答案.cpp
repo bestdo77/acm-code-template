@@ -10,20 +10,7 @@ signed main(){
 	//上界max,下界min写二分查
     int min,max,ans;
 	int l=min-1,r=max+1;
-	while(l+1<r){//默认递增
-		int mid=(l+r)>>1;
-		if(check(mid)) l=mid;
-		else r=mid; 
-    }
-	ans=l;
-	//二分找最大
-	 while(l<=r){
-            int mid=l+r>>1;
-            if(check(mid)) r=mid-1;
-            else l=mid+1;
-        }
-        cout<<l<<endl;
-	// 另一个二分找最大的	
+
 	while(l+1<r){
 		int mid=(l+r)>>1;
 		if(check(mid)) r=mid;

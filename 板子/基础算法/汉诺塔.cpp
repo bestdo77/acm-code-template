@@ -16,8 +16,7 @@ void hanoi(int n,char x, char y,char z){
 }
 signed main(){
     ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+    cin.tie(0);cout.tie(0); 
     int n;cin>>n;
     hanoi(n,'A','B','C');
     return 0;

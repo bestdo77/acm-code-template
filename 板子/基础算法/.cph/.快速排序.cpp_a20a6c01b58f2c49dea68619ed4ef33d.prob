@@ -1,0 +1,1 @@
+{"name":"Local: 快速排序","url":"d:\\code\\板子\\基础算法\\快速排序.cpp","tests":[{"id":1735454935964,"input":"7\n8 3 2 5 9 1 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\板子\\基础算法\\快速排序.cpp","group":"local","local":true}

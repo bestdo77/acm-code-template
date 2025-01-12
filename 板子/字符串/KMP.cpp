@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 using namespace std;
+#define endl '\n'
 const int N=1e6+10;
 char a[1000010]; // 文本串
 char b[1000010]; // 模板串(将被匹配的子串)
@@ -44,11 +45,11 @@ int main(){
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-	cin>>b;
+	cin>>a>>b;
 	int n=strlen(a);
 	int m=strlen(b);
-	// kmp(n,m);
 	getNext(m);
+	kmp(n,m);
 	for(int i=1;i<=p1;i++) cout<<ans[i]+1<<endl;//每个匹配的位置
 	for(int i=0;i<m;i++) cout<<kmp_next[i]<<" ";
 	cout<<endl;	

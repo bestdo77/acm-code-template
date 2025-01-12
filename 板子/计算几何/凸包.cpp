@@ -1,6 +1,7 @@
 // 凸包
 // Andrew算法求凸包，最后一个点与第一个点重合
 // Need: (^,-,<), sgn, le
+
 using Points = vector<Point>;
 bool check(Point p, Point q, Point r) {
     return le(0, (q - p) ^ (r - q));

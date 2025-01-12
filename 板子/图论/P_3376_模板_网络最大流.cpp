@@ -1,95 +1,100 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+#include <bitset>
+
 using namespace std;
-#define ll long long
-const ll inf=0x3f3f3f3f3f3f3f3f;
-const ll infll=0x3f3f3f3f3f3f3f3f;
+
+const int INF = 1e9;
 #define int long long
-#define pii pair <int,int>
-#define ld long double
-#define endl "\n"
-const int N=200050;
+struct Edge {
+    int to;
+    int cap;
+    int rev;
+    bool is_rev;
+    Edge(int t, int c, int r, bool rev_edge) : to(t), cap(c), rev(r), is_rev(rev_edge) {}
+};
 
+class Graph {
+public:
+    vector<vector<Edge>> adj;
+    vector<int> level;
+    vector<int> ptr;
+    int n;
+    bitset<100005> used; // 假设节点数不超过100005
 
-struct EDGE_{
-    int to,w,nxt;
-}E_[N];
-int HEAD_[N],cnt;
-//链式前向星存图：HEAD[i]是i最后出现的位置，nxt是这个点为出点的上一个位置。
+    Graph(int _n) : n(_n), adj(_n), level(_n), ptr(_n) {}
 
-void INIT(int n){
-    for (int i=0;i<=n;i++)HEAD_[i]=-1;
-    cnt=0;
-}
+    void add_edge(int from, int to, int cap) {
+        adj[from].push_back(Edge(to, cap, adj[to].size(), false));
+        adj[to].push_back(Edge(from, 0, adj[from].size()-1, true));
+    }
 
-void ADD1(int u,int v,int w){
-    E_[cnt].nxt=HEAD_[u];
-    E_[cnt].to=v;
-    E_[cnt].w=w;
-    HEAD_[u]=cnt++;
-}
-
-void ADD(int u,int v,int w){
-    ADD1(u,v,w);
-    ADD1(v,u,0);
-}
-
-int S_,T_;
-int NOW[N],DIS[N];
-int BFS_(){
-    memset(DIS, 0x3f,sizeof DIS);//<-注意数据范围：如果需要开ll，应该改掉inf
-    queue<int> q;
-    q.push(S_);
-    DIS[S_]=0;
-    NOW[S_]=HEAD_[S_];
-    while (!q.empty()){
-        int u=q.front();
-        q.pop();
-        for (int i=HEAD_[u];i!=-1;i=E_[i].nxt){
-            int v=E_[i].to;
-            if(E_[i].w>0&&DIS[v]==inf){
-                q.push(v);
-                NOW[v]=HEAD_[v];
-                DIS[v]=DIS[u]+1;
-                if(v==T_)return 1;
+    int max_flow(int s, int t) {
+        int flow = 0;
+        while (bfs(s, t)) {
+            fill(ptr.begin(), ptr.end(), 0);
+            used.reset();
+            int pushed;
+            while ((pushed = dfs(s, t, INF)) > 0) {
+                flow += pushed;
             }
         }
+        return flow;
     }
-    return 0;
-}
-int DFS_(int u,int sum){
-    if(u==T_)return sum;
-    int k,res=0;
-    for (int i=NOW[u];(i!=-1)&&sum;i=E_[i].nxt){
-        NOW[u]=i;
-        int v=E_[i].to;
-        if(E_[i].w>0&&(DIS[v]==DIS[u]+1)){
-            k=DFS_(v,min(sum,E_[i].w));
-            if(k==0)DIS[v]=inf;
-            E_[i].w-=k;
-            E_[i^1].w+=k;
-            res+=k;
-            sum-=k;
+
+private:
+    bool bfs(int s, int t) {
+        queue<int> q;
+        fill(level.begin(), level.end(), -1);
+        level[s] = 0;
+        q.push(s);
+
+        while (!q.empty()) {
+            int v = q.front();
+            q.pop();
+            for (const Edge& e : adj[v]) {
+                if (e.cap > 0 && level[e.to] == -1) {
+                    level[e.to] = level[v] + 1;
+                    q.push(e.to);
+                    if (e.to == t) return true;
+                }
+            }
         }
+        return false;
     }
-    return res;
-}
-int Dinic(){
-    int res=0;
-    while (BFS_()){
-        res+=DFS_(S_,inf);
+
+    int dfs(int v, int t, int pushed) {
+        if (v == t) return pushed;
+        used.set(v);
+        for (int& i = ptr[v]; i < adj[v].size(); ++i) {
+            Edge& e = adj[v][i];
+            if (!used[e.to] && e.cap > 0 && level[v] < level[e.to]) {
+                int tr = dfs(e.to, t, min(pushed, e.cap));
+                if (tr > 0) {
+                    e.cap -= tr;
+                    adj[e.to][e.rev].cap += tr;
+                    return tr;
+                }
+            }
+        }
+        return 0;
     }
-    return res;
-}
-signed main (){
-    ios::sync_with_stdio(false);
-    cin.tie(0);cout.tie(0);
-    int n,m;
-    cin >>n>>m>>S_>>T_;
-    INIT (n);
-    for (int i=0;i<m;i++){
+};
+
+signed main() {
+    int n,m;cin>>n>>m;
+    int s=1,t=m;
+    Graph g(m+1);
+    for(int i=1;i<=n;i++){
         int u,v,w;
-        cin >>u>>v>>w;
-        ADD(u,v,w);
+        cin>>u>>v>>w;
+        g.add_edge(u, v, w);
     }
-    cout <<Dinic()<<endl;
+
+    int flow=g.max_flow(s, t);
+    cout << g.max_flow(s, t) << " "<< endl;
+
+    return 0;
 }

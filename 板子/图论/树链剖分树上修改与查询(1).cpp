@@ -74,7 +74,7 @@ void modify(int k,int l,int r,int p,int q,ll val){
     }
 }
 
-ll query(int k,int l,int r,int p,int q,ll lz){//掉用的时候应该lz是0，懒标记是下面的节点，自身已经维护好了
+ll query(int k,int l,int r,int p,int q,ll lz){//用的时候应该lz是0，懒标记是下面的节点，自身已经维护好了
     if(p==l&&q==r) return t[k].sum+lz*(q-p+1);
     int mid=l+r>>1;
     if(q<=mid) return query(ls,l,mid,p,q,lz+t[k].lz);//这里有变动

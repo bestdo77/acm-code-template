@@ -43,9 +43,7 @@ void solve (){
         if(vis[u]) continue;
         vis[u]=1;
         ans+=d;
-        for(int i=0;i<e[u].size();i++){
-            int v=e[u][i].first;
-            int w=e[u][i].second;
+        for(auto [v,w]:e[u]){
             if(w<dis[v]){
                 dis[v]=w;
                 q.push(make_pair(w,v));
