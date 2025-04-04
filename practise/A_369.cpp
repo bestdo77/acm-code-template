@@ -13,6 +13,8 @@ vector<int> G[N];
 void solve(){
     int x1,x2;cin>>x1>>x2;
     int ans=0;
+    db(x1)
+    cendl
     if(x1>x2) swap(x1,x2);
     if(x1==x2) cout<<1<<endl;
     else{

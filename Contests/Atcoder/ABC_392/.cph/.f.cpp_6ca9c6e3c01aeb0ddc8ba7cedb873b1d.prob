@@ -1,0 +1,1 @@
+{"name":"Local: f","url":"d:\\code\\Contests\\Atcoder\\ABC_392\\f.cpp","tests":[{"id":1739021228822,"input":"4\n1 1 1 1\n","output":"4 2 3 1\n"},{"id":1739021929484,"input":"4\n1 1 2 1\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\Contests\\Atcoder\\ABC_392\\f.cpp","group":"local","local":true}

@@ -47,9 +47,9 @@ void Atomatic_AC_machine(){
             ans[a[i].id]+=max(a[i].l-l,0ll);
         }
     }
-    for(int i=1;i<=n;i++){
-        if(i+1<=n&&a[i+1].l==a[i].l&&a[i].r==a[i+1].r) ans[a[i].id]=ans[a[i+1].id]=0;
-    }
+    // for(int i=1;i<=n;i++){
+    //     if(i+1<=n&&a[i+1].l==a[i].l&&a[i].r==a[i+1].r) ans[a[i].id]=ans[a[i+1].id]=0;
+    // }
     for(int i=1;i<=n;i++){
         cout<<ans[i]<<endl;
     }

@@ -26,8 +26,20 @@ struct Dsu{
     }   
 };
 int main(){
-    int n;cin>>n;
-    vector<Dsu> a(5, Dsu(n));
+    int n,m;cin>>n>>m;
     Dsu dsu(n);
+    for(int i=1;i<=m;i++){
+        int op,l,r;cin>>op>>l>>r;
+        if(op==1){
+            dsu.join(l,r);
+        }else{
+            if(dsu.find(l)==dsu.find(r)){
+                cout<<"Y"<<endl;
+            }else{
+                cout<<"N"<<endl;
+            }
+        }
+    }
     return 0;
 }
+

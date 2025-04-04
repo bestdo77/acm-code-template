@@ -20,12 +20,10 @@ void dijkstra(int s){
     for(int i=0;i<=n;i++) vis[i]=0;
     d[s]=0;q.push({0,s});
     while(q.size()){//按最远的排序
-        auto t=q.top();q.pop();
-        int u=t.second;
+        auto [_,u]=q.top();q.pop();
         if(vis[u]) continue;
         vis[u]=1;//标记u已经入队
-        for(auto ed:e[u]){
-            int v=ed.v,w=ed.w;
+        for(auto &[v,w]:e[u]){
             if(d[v]>d[u]+w){
                 d[v]=d[u]+w;
                 q.push({d[v],v});
@@ -33,6 +31,7 @@ void dijkstra(int s){
         }
     }
 }
+
 signed main (){
     ios::sync_with_stdio(false);
     cin.tie(0);cout.tie(0);

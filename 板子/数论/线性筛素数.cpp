@@ -21,11 +21,10 @@ int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);cout.tie(0);
 	cin>>n;
+	int q;cin>>q;
 	eulr();
-	for(int i=5e4;i<=cnt;i++){
-		cout<<prime[i]<<" ";
+	for(int i=1;i<=q;i++){
+		cout<<prime[i]<<endl;
 	}
-	cout<<endl;
-	cout<<cnt<<endl;
 	return 0;
 }

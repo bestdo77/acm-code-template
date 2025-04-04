@@ -1,0 +1,1 @@
+{"name":"Local: I","url":"d:\\code\\Contests\\TJUACM\\3.1_contest10\\I.cpp","tests":[{"id":1740810152067,"input":"3\n1 1\n2 4\n3 2","output":""},{"id":1740810183534,"input":"2\n1 1\n1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\Contests\\TJUACM\\3.1_contest10\\I.cpp","group":"local","local":true}

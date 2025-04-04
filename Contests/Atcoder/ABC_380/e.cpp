@@ -19,27 +19,27 @@ void init(int n){
         son[i]=1;
         cntcol[i]=1;
         l[i]=r[i]=i;
-    }//初始化掌门。掌门是他自己
+    }
 }
  
-int find_f(int x){
+int find(int x){
 	if(x!=f[x]) {
-        return f[x]=find_f(f[x]);
+        return f[x]=find(f[x]);
     }
     return f[x]; 
 } 
  
 void join(int x,int y){
-	int fx=find_f(x);
-	int fy=find_f(y);
+	int fx=find(x);
+	int fy=find(y);
 	if(fx!=fy) {
         f[fy]=fx;
         l[fx]=min(l[fx],l[fy]);
         r[fx]=max(r[fx],r[fy]);
-        son[fx]+=son[fy];//儿子挂到爹上
+        son[fx]+=son[fy];
         son[fy]=0;
     }
-}//合并子集
+}
 void Atomatic_AC_machine(){
     int n,q;cin>>n>>q;
     init(n);
@@ -48,15 +48,15 @@ void Atomatic_AC_machine(){
         if(op==1){
             int x,c;cin>>x>>c;
             // cout<<x<<" "<<c<<endl;
-            int ncol=col[find_f(x)];
-            int nsz=son[find_f(x)];
+            int ncol=col[find(x)];
+            int nsz=son[find(x)];
             if(ncol!=c){
-                int lx=l[find_f(x)],rx=r[find_f(x)];
-                if(col[find_f(lx-1)]==c||col[find_f(rx+1)]==c){
-                    if(col[find_f(lx-1)]==c) join(find_f(lx-1),x);
-                    if(col[find_f(rx+1)]==c) join(find_f(rx+1),x);
+                int lx=l[find(x)],rx=r[find(x)];
+                if(col[find(lx-1)]==c||col[find(rx+1)]==c){
+                    if(col[find(lx-1)]==c) join(find(lx-1),x);
+                    if(col[find(rx+1)]==c) join(find(rx+1),x);
                 }
-                col[find_f(x)]=c;
+                col[find(x)]=c;
                 cntcol[ncol]-=nsz;
                 cntcol[c]+=nsz;
             }
@@ -64,12 +64,6 @@ void Atomatic_AC_machine(){
             int c;cin>>c;
             cout<<cntcol[c]<<endl;
         }
-        // for(int j=1;j<=n;j++){
-        //     cout<<col[find_f(j)]<<" ";
-        // }cout<<endl;
-        // for(int j=1;j<=n;j++){
-        //     cout<<son[j]<<" ";
-        // }cout<<endl;
     }
 }   
 signed main(){

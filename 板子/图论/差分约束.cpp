@@ -32,10 +32,11 @@ bool spfa(int s){
     }
     return false;
 }
+d[v]-d[u]<=w;
 signed main(){
     cin>>n>>m;
     for(int i=1;i<=m;i++){
-        int u,v,w,opr;cin>>opr>>u>>v;
+        int u,v,w,opr;cin>>u>>v>>w;
         if(opr==1){
             cin>>w;
             e[u].push_back({v,-w});//x-y>=c
@@ -51,7 +52,12 @@ signed main(){
         e[0].push_back({i,0});
     }
     if(!spfa(0)){
-        cout<<"Yes"<<endl;
+        int mn=*min_element(d+1,d+1+n);
+        for(int i=1;i<=n;i++){
+            cout<<d[i]-mn<<" ";
+        }
+        cout<<endl;
     }else cout<<"No"<<endl;
     return 0;
+    
 }

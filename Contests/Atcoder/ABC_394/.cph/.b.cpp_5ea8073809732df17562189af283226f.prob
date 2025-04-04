@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"d:\\code\\Contests\\Atcoder\\ABC_394\\b.cpp","tests":[{"id":1740225748202,"input":"3\ntc\noder\na\n","output":""},{"id":1740225819897,"input":"4\ncat\nenate\non\nc\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\Contests\\Atcoder\\ABC_394\\b.cpp","group":"local","local":true}

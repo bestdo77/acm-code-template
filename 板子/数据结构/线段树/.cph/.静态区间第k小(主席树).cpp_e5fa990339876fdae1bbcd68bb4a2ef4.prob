@@ -1,0 +1,1 @@
+{"name":"Local: 静态区间第k小(主席树)","url":"d:\\code\\板子\\数据结构\\线段树\\静态区间第k小(主席树).cpp","tests":[{"id":1743069164007,"input":"4 4\n5933 27023 26153 31496 \n1 4 4\n1 4 4\n1 4 1\n1 4 4\n","output":"31496\n31496\n5933\n31496\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\板子\\数据结构\\线段树\\静态区间第k小(主席树).cpp","group":"local","local":true}

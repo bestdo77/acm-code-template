@@ -1,56 +1,58 @@
 #include <bits/stdc++.h>
-using namespace std;
-template <typename T>
 struct Fenwick {
     int n;
-    std::vector<T> a;
+    std::vector<int> a;
     
-    Fenwick(int n_ = 0) {
+    Fenwick(int n_ = 0) { // capacity is n
         init(n_);
     }
     
     void init(int n_) {
         n = n_;
-        a.assign(n, T{});
+        a.assign(n + 1, 0); // 1-index, so we need n+1 elements
     }
     
-    void add(int x, const T &v) {//x range from 0 to n-1;
-        for (int i = x + 1; i <= n; i += i & -i) {
-            a[i - 1] = a[i - 1] + v;
+    void add(int x, const int &v) { // x is 1-index
+        for (int i = x; i <= n; i += i & -i) {
+            a[i] += v;
         }
     }
     
-    T sum(int x) {//query range from 1 to n, denote sum of [0,x-1]
-        T ans{};
+    int sum(int x) { // query sum of the first x numbers (1-index)
+        int ans = 0;
         for (int i = x; i > 0; i -= i & -i) {
-            ans = ans + a[i - 1];
+            ans += a[i];
         }
         return ans;
     }
     
-    T rangeSum(int l, int r) {
-        return sum(r) - sum(l);
+    int rangeSum(int l, int r) { // 1-index, inclusive
+        return sum(r) - sum(l - 1);
     }
     
-    int select(const T &k) {//find the first x that sum[x]>=k;
+    int select(const int &k) { // find the first x that sum[x] >= k (1-index)
         int x = 0;
-        T cur{};
+        int cur = 0;
         for (int i = 1 << std::__lg(n); i; i /= 2) {
-            if (x + i <= n && cur + a[x + i - 1] <= k) {
+            if (x + i <= n && cur + a[x + i] < k) {
                 x += i;
-                cur = cur + a[x - 1];
+                cur += a[x];
             }
         }
-        return x;
+        // x is the largest index where sum[x] < k, so x + 1 is the first index where sum[x] >= k
+        return x + 1;
+    }
+    
+    int upselect(const int &k) { // find the first x that sum[x] > k (1-index)
+        int x = 0;
+        int cur = 0;
+        for (int i = 1 << std::__lg(n); i; i /= 2) {
+            if (x + i <= n && cur + a[x + i] <= k) {
+                x += i;
+                cur += a[x];
+            }
+        }
+        // x is the largest index where sum[x] <= k, so x + 1 is the first index where sum[x] > k
+        return x + 1;
     }
 };
-int main(){
-    int n=10;
-    Fenwick<int> tr(n);
-    for(int i=0;i<n;i++){
-        tr.add(i,2);
-    }
-    for(int i=0;i<=2*n;i++){
-        cout<<i<<" "<<tr.select(i)<<endl;
-    }
-}

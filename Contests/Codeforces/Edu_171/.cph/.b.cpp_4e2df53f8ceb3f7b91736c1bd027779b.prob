@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"d:\\code\\Contests\\Codeforces\\Edu_171\\b.cpp","tests":[{"id":1738939614621,"input":"4\n2\n1 2\n1\n7\n3\n2 4 9\n5\n1 5 8 10 13\n","output":""},{"id":1738940014836,"input":"1\n2\n1 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\Contests\\Codeforces\\Edu_171\\b.cpp","group":"local","local":true}

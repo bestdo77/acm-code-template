@@ -1,58 +1,52 @@
-#include <iostream>
-#include <vector>
-#include <queue>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-struct edge{
-	int u,v;
-};
-bool vis1[110000],vis2[110000];
-vector<int> e[110000];
-vector<edge> s;
-bool cmp(edge x,edge y){
-	if(x.u==y.u) return x.v<y.v;
-	else return x.u<y.u;
-}
-void dfs(int x){
-	vis1[x]=1;
-	cout<<x<<" ";
-	for(int i=0;i<e[x].size();i++){
-		int pos=s[e[x][i]].v;
-		if(vis1[pos]!=1){
-			dfs(pos);
-		}
+const int N=1e6+10;
+vector<int> e[N];
+int vis[N];
+int dfs_order[N],p1;
+int bfs_order[N],p2;
+void dfs(int u){
+	// memset(vis,0,sizeof(vis));
+	dfs_order[++p1]=u;
+	vis[u]=1;
+	for(auto v:e[u]){
+		if(vis[v]) continue;
+		dfs(v);	
 	}
 }
-void bfs(int x){//x表示顶点. 
+void bfs(int u){
+	memset(vis,0,sizeof(vis));
 	queue<int> q;
-	q.push(x);
-	cout<<x<<" ";
-	vis2[x]=1;
-	while(!q.empty()){
-		int pos=q.front();//顶点位置 
-		for(int i=0;i<e[pos].size();i++){
-			if(vis2[s[e[pos][i]].v]!=1){
-				cout<<s[e[pos][i]].v<<" ";
-				q.push(s[e[pos][i]].v);
-				vis2[s[e[pos][i]].v]=1;
-			}
+	q.push(u);
+	while(q.size()){
+		int u=q.front();q.pop();
+		bfs_order[++p2]=u;
+		vis[u]=1;
+		for(auto v:e[u]){
+			if(vis[v]) continue;
+			q.push(v);
 		}
-		q.pop();
 	}
 }
 int main(){
 	int n,m;cin>>n>>m;
-	for(int i=0;i<m;i++){
-		int uu,vv;
-		cin>>uu>>vv;
-		s.push_back((edge){uu,vv});
+	for(int i=1;i<=m;i++){
+		int u,v;cin>>u>>v;
+		e[u].push_back(v);
+		e[v].push_back(u);
 	}
-	sort(s.begin(),s.end(),cmp);
-	for(int i=0;i<m;i++){
-		e[s[i].u].push_back(i);
+	for(int i=1;i<=n;i++){
+		sort(e[i].begin(),e[i].end());
 	}
 	dfs(1);
-	cout<<endl;
 	bfs(1);
+	for(int i=1;i<=n;i++){
+		cout<<dfs_order[i]<<" ";
+	}
+	cout<<endl;
+	for(int i=1;i<=n;i++){
+		cout<<bfs_order[i]<<" ";
+	}
+	cout<<endl;
 	return 0;
 } 

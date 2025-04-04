@@ -1,0 +1,1 @@
+{"name":"Local: c","url":"d:\\code\\Contests\\Atcoder\\ABC_394\\c.cpp","tests":[{"id":1740226066689,"input":"WACWA\n","output":""},{"id":1740226096563,"input":"WWA\n","output":""},{"id":1740226109010,"input":"WWWWW\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\code\\Contests\\Atcoder\\ABC_394\\c.cpp","group":"local","local":true}

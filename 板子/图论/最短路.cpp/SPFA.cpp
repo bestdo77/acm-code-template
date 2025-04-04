@@ -32,3 +32,20 @@ bool spfa(int s){
     }
     return false;
 }
+signed main(){
+    int t;
+    int s;cin>>n>>m;
+    for(int i=1;i<=m;i++){
+        int u,v,w;cin>>u>>v>>w;
+        e[u].push_back({v,w});
+    }
+    if(spfa(1)){
+        cout<<"YES"<<endl;
+    }else{
+        cout<<"NO"<<endl;
+    }
+    for(int i=1;i<=n;i++){
+        cout<<d[i]<<" ";
+    }
+    cout<<endl;
+}

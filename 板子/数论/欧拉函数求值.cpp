@@ -1,3 +1,4 @@
+/*欧拉函数, 即 ϕ(x)，它表示从 1 − n 中和它互质的数的个数。*/
 #include <iostream>
 using namespace std;
 const int MAX=1e8+10;
@@ -24,11 +25,11 @@ int main()
 			if(i%prime[j]==0)
 			{
 			
-				phi[i*prime[j]]=phi[i]*prime[j];//性质2，两个数同余的合数的欧拉函数：余数（素数）乘以素数 
+				phi[i*prime[j]]=prime[j]*phi[i];//性质2，n|m,phi[n*m]=n*phi[m]
 				break;//相比于埃氏筛优化的地方 
 			}else
 			{
-				phi[i*prime[j]]=phi[i]*phi[prime[j]];//互为素数的合数的欧拉函数：两素数欧拉函数之积
+				phi[i*prime[j]]=phi[i]*phi[prime[j]];//gcd(n,m)==1,phi[n*m]=phi[n]*phi[m]
 			}
 		}
 	}

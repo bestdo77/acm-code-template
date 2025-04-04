@@ -6,7 +6,7 @@ const int N=1e5+10;
 #define ls k<<1
 #define rs k<<1|1
 struct node{
-    int l,r,sum,lz;
+    int sum,lz;
 }t[N<<2];
 int a[N];
 void build(int k,int l,int r){
