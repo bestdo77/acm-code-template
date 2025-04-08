@@ -19,12 +19,8 @@ void qsort(int l, int r) {
             j--;
         }
     }
-    cout<<i<<" "<<j<<endl;
+    
     swap(a[l], a[j]);
-    for(int i=1;i<=n;i++){
-        cout<<a[i]<<" ";
-    }
-    cout<<endl;
     qsort(l, j);
     qsort(i, r);
 }
