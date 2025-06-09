@@ -8,7 +8,7 @@ using namespace filesystem;
 
 int main() {
     try {
-        const string targetFolder = "/home/sw7777/acm-code-template/Contests/Codeforces/Div.2_1014";
+        const string targetFolder = "/home/sw7777/acm-code-template/Contests/Hdu/4.25_contest8";
         const string sourceFile = "/home/sw7777/acm-code-template/create/start.cpp";
         const int n = 7;
 

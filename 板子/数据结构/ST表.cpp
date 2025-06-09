@@ -24,6 +24,25 @@ struct STtable{
 		return max(dp[l][k],dp[r-(1<<k)+1][k]).second;
 	}
 }st;
+struct STtable{
+	int logg2[N];
+	int dp[N][20];
+	void init(int n){
+		for(int i=2;i<=n;i++){
+			logg2[i]=logg2[i>>1]+1;
+		}
+		for(int j=1;j<=logg2[n];j++){
+			for(int i=1;i+(1<<j)-1<=n;i++){
+				dp[i][j]=max(dp[i][j-1],dp[i+(1<<(j-1))][j-1]);
+			}
+		}
+	}
+	int qmax(int l,int r){
+		int k=logg2[r-l+1];
+		return max(dp[l][k],dp[r-(1<<k)+1][k]);
+	}
+}st;
+
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);cout.tie(0);

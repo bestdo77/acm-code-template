@@ -10,9 +10,9 @@ signed main(){
     cin.tie(0);
     cout.tie(0);
     int n,c1,c2;
-        cin>>n>>c1>>c2;//注意清理的的是0-体积，不是0-个数
-        for(int i=1;i<=n;i++) v[i]=1;
-        for(int i=1;i<=n;i++) cin>>w1[i]>>w2[i];
+    cin>>n>>c1>>c2;//注意清理的的是0-体积，不是0-个数
+    for(int i=1;i<=n;i++) v[i]=1;
+    for(int i=1;i<=n;i++) cin>>w1[i]>>w2[i];
         
     for (int i=1; i<=n; i++)   // 此行语句也常用 while(n--) 代替，其中的n为物品个数
         for (int j=c1; j>=w1[i]; j--)

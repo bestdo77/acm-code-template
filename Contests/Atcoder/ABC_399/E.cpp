@@ -14,7 +14,7 @@ const i64 mod=1e9+7;
 map<pii,int> vis;
 vector<int> e[N];
 int din[N];
-int vis1[26],vis2[26];
+int vis2[26];
 void dfs(int u){
     if(vis2[u]) return;
     vis2[u]=1;
@@ -26,60 +26,52 @@ void Atomatic_AC_machine(){
     int n;cin>>n;
     string s,t;cin>>s>>t;
     int ans=0;
+    set<int> st;
     for(int i=0;i<n;i++){
         int u=s[i]-'a',v=t[i]-'a';
-        if(!vis.count(pii{u,v})){
-            vis1[u]=vis1[v]=1;
-            vis[{u,v}]=1;
-            e[u].push_back(v);
-            din[v]++;
-            ans++;
-            if(u==v){
-                vis2[u]=1;
-                ans--;
+        if(!vis[pii{u,v}]){
+            if(e[u].size()&&e[u][0]!=v){
+                cout<<-1;
+                return;
             }
+            vis[pii{u,v}]=1;
+            if(u!=v) din[v]++;
+            if(u!=v) ans++;
         }
+        e[u].push_back(v);
+        st.insert(v);
     }
-    for(int i=0;i<26;i++){
-        if(e[i].size()>1){
-            cout<<-1<<endl;
-            return;
-        }
-    }
+
+
+
     queue<int> q;
     for(int i=0;i<26;i++){
         if(!din[i]) q.push(i);
     }
     while(q.size()){
         int u=q.front();
-        vis2[u]=1;
         q.pop();
+        vis2[u]=1;
         for(auto v:e[u]){
             --din[v];
             if(!din[v]) q.push(v);
         }
     }
-    int re=26-accumulate(vis1,vis1+26,0);//可以借来拆环的字母
+    if(st.size()==26){
+		int f=0;
+		for(int i=0;i<n;i++) f+=(s[i]!=t[i]);
+		if(f) cout<<-1;
+		else cout<<0;
+		return;
+	}
     int cnt=0;
-    // for(int i=0;i<26;i++){
-    //     if(vis1[i]&&!vis2[i]){
-    //         db(char('a'+i))
-    //     }
-    // }
-    // cendl
     for(int i=0;i<26;i++){
-        if(vis1[i]&&!vis2[i]){//成环了
+        if(!vis2[i]){//成环了
             dfs(i);
-            cnt++;
+            ans++;
         }
     }
-    // db(ans<<" "<<cnt<<" "<<re)
-    // cendl
-    if(cnt>re){
-        cout<<-1<<endl;
-    }else{
-        cout<<ans+cnt<<endl;
-    }
+    cout<<ans<<endl;
 }   
 signed main(){
     ios::sync_with_stdio(false);cin.tie(0);cout.tie(0);
