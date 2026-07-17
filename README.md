@@ -1,1 +1,1 @@
-acm代码模板
+acm-code-template for my competition life
